@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+var TodoItem = require('./todoItem');
+
 var TodoComponent = React.createClass({
   getInitialState: function() {
     return {
@@ -32,19 +34,4 @@ var TodoComponent = React.createClass({
   }
 })
 
-var TodoItem = React.createClass({
-  render: function(){
-    return(
-      <li className="fun">
-      <span className="item-name">{this.props.item}</span>
-          <button className="item-delete" onClick={this.handleDelete}>Delete</button>
-          </li>
-
-      )
-  },
-  // Custom Functions
-  handleDelete: function(){
-    this.props.onDelete(this.props.item);
-  }
-})
 ReactDOM.render(<TodoComponent />, document.getElementById('todo'));
