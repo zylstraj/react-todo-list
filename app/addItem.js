@@ -1,7 +1,11 @@
 import React from "react";
 
-var AddItem = React.createClass({
-  render: function(){
+export class AddItem extends React.Component{
+  constructor(props){
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  render(){
     return(
       <form id="add-todo" onSubmit={this.handleSubmit}>
       <input type="text" required ref="newItem" />
@@ -9,12 +13,29 @@ var AddItem = React.createClass({
       </form>
 
       )
-  },
-  handleSubmit: function(e){
+  }
+  handleSubmit(e){
     e.preventDefault();
     this.props.onAdd(this.refs.newItem.value);
     this.refs.newItem.value="";
   }
-})
+}
 
-module.exports = AddItem;
+// var AddItem = React.createClass({
+//   render: function(){
+//     return(
+//       <form id="add-todo" onSubmit={this.handleSubmit}>
+//       <input type="text" required ref="newItem" />
+//       <input type="submit" value="Add"/>
+//       </form>
+
+//       )
+//   },
+//   handleSubmit: function(e){
+//     e.preventDefault();
+//     this.props.onAdd(this.refs.newItem.value);
+//     this.refs.newItem.value="";
+//   }
+// })
+
+// module.exports = AddItem;
